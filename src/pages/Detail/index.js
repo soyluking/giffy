@@ -1,33 +1,29 @@
-import React, { useState, useEffect } from 'react';
-import getGif from '../../services/getGif';
+import React from 'react';
+import Spinner from '../../components/Spinner';
+import useGlobalGifs from '../../hooks/useGlobalGifs';
+// import getGif from '../../services/getGif';
+import CardGif from '../../components/CardGif/';
 
-function Detail({ params }) {
+export default function Detail({ params }) {
   const { slug } = params;
   const id = slug.split('-').pop();
-  const [gif, setGif] = useState(null);
+  // const [gif, setGif] = useState(null);
+  const gifs = useGlobalGifs();
 
-  useEffect(() => {
-    getGif(id).then(gif => setGif(gif));
-  }, [id, slug]);
+  let detailGif;
 
-  if (!gif)
-    return (
-      <div className='loading'>
-        <span role='img' aria-label='Emoji esperando'>
-          🙄
-        </span>{' '}
-        esto se esta demorando
-      </div>
-    );
+  // if (gifs.length) {
+  detailGif = gifs.find(singleGif => singleGif.id === id);
+  // }
 
-  const { title, images } = gif;
-  const { url } = images.original;
+  // useEffect(() => {
+  //   getGif(id).then(gif => setGif(gif));
+  // }, [id, slug]);
 
-  return (
-    <article>
-      <img src={url} alt={title} />
-    </article>
-  );
+  if (!detailGif) return <Spinner />;
+
+  // const { title, images } = detailGif;
+  // const { url } = images.original;
+
+  return <CardGif {...detailGif} />;
 }
-
-export default Detail;

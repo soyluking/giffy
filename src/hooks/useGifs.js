@@ -1,22 +1,23 @@
-import { useState, useEffect } from 'react';
-
+import { useState, useEffect, useContext } from 'react';
+import GifsContext from '../context/GifsContext';
 import getGifs from '../services/getGifs';
 
 export function useGifs({ keyword } = { keyword: null }) {
   const [loading, setLoading] = useState(false);
-  const [gifs, setGifs] = useState([]);
-
-  const KEYWORD_TO_USE =
-    keyword || localStorage.getItem('last_used_keywork') || 'welcome';
+  const { gifs, setGifs } = useContext(GifsContext);
 
   useEffect(() => {
     setLoading(true);
-    getGifs(KEYWORD_TO_USE).then(gifs => {
+
+    const keywordToUse =
+      keyword || localStorage.getItem('last_used_keywork') || 'welcome';
+
+    getGifs({ keyword: keywordToUse }).then(gifs => {
       setGifs(gifs);
       setLoading(false);
-      localStorage.setItem('last_used_keywork', KEYWORD_TO_USE);
+      localStorage.setItem('last_used_keywork', keywordToUse);
     });
-  }, [KEYWORD_TO_USE]);
+  }, [keyword, setGifs]);
 
   return { loading, gifs };
 }
