@@ -1,4 +1,4 @@
-.Gif {
+.CardGif {
   border: 1px solid #eee;
   border-radius: 6px;
   color: #fff;
@@ -10,11 +10,11 @@
   width: 80%;
 }
 
-.Gif h4 {
+.CardGif h4 {
   margin: 0;
 }
 
-.Gif img {
+.CardGif img {
   margin-top: 1rem;
   object-fit: contain;
 }

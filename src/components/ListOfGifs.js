@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import getGifs from './../services/getGifs';
-import Gif from './Gif';
+import CardGif from './CardGif';
 
 function ListOfGifs({ params }) {
   const { keyword } = params;
@@ -25,8 +25,8 @@ function ListOfGifs({ params }) {
       </div>
     );
 
-  return gifs.map(({ id, title, url }) => (
-    <Gif id={id} title={title} url={url} key={id} />
+  return gifs.map(({ id, title, slug, url }) => (
+    <CardGif id={id} title={title} slug={slug} url={url} key={id} />
   ));
 }
 

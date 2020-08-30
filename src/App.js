@@ -1,6 +1,9 @@
 import React from 'react';
-import { Link, Route } from 'wouter';
+import { Route } from 'wouter';
+
+import Home from './pages/Home';
 import ListOfGifs from './components/ListOfGifs';
+import Gif from './components/Gif';
 
 import './App.css';
 
@@ -8,14 +11,19 @@ function App() {
   return (
     <div className='App'>
       <section className='App-content'>
-        <h1>Giffy</h1>
-        <nav className='App-nav'>
-          <Link to='/gif/peaky-blinders'>Peaky Blinders</Link>
-          <Link to='/gif/better-call-saul'>Better Call Saul</Link>
-          <Link to='/gif/stranger-things'>Stranger Things</Link>
-        </nav>
-        <Route path='/gif/:keyword' component={ListOfGifs} />
+        <h1 className='App-title'>
+          <a href='/'>Giffy</a>
+        </h1>
+
+        <Route path='/' component={Home} />
+        <Route path='/search/:keyword' component={ListOfGifs} />
+        <Route path='/gifs/:slug' component={Gif} />
       </section>
+      <footer className='App-footer'>
+        <p>
+          Powered By <strong>GIPHY</strong>
+        </p>
+      </footer>
     </div>
   );
 }
