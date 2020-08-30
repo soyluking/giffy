@@ -1,0 +1,22 @@
+.CardGif {
+  -webkit-column-break-inside: avoid;
+  break-inside: before;
+  background-color: #eee;
+  display: block;
+  margin-bottom: 0.5em;
+  width: 100%;
+}
+
+.CardGif h4 {
+  margin: 0;
+}
+
+.CardGif img {
+  display: block;
+  height: auto;
+  width: 100%;
+}
+
+.loading {
+  font-size: 40px;
+}

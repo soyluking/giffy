@@ -1,7 +1,7 @@
 const API_KEY = 'ZHEtr66uzj2401o3lsM6eqzsyxG7AgoG';
-const API_LIMIT = '5';
+const API_LIMIT = '20';
 
-export default async function getGifs(keyword = 'morty') {
+export default async function getGifs(keyword) {
   const API_URL = `https://api.giphy.com/v1/gifs/search?api_key=${API_KEY}&q=${keyword}&limit=${API_LIMIT}&offset=0&rating=g&lang=es`;
 
   const res = await fetch(API_URL);

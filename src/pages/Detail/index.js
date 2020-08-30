@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import getGif from './../services/getGif';
+import getGif from '../../services/getGif';
 
-function Gif({ params }) {
+function Detail({ params }) {
   const { slug } = params;
   const id = slug.split('-').pop();
   const [gif, setGif] = useState(null);
@@ -30,4 +30,4 @@ function Gif({ params }) {
   );
 }
 
-export default Gif;
+export default Detail;
